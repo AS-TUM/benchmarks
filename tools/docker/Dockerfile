@@ -31,7 +31,8 @@ RUN cd /tmp && \
 COPY ThermSniper /root/ThermSniper
 RUN rm -rf /root/ThermSniper/external/snipersim && \
     rm -rf /root/ThermSniper/benchmarks && \
-    rm -rf /root/ThermSniper/external/benchmarks
+    rm -rf /root/ThermSniper/external/benchmarks && \
+    rm -f /root/ThermSniper/external/HotSpot/hotspot
 
 # Clone snipersim under external/
 RUN git clone ${SNIPER_GIT_REPO} /root/ThermSniper/external/snipersim && \
@@ -58,6 +59,10 @@ COPY ThermSniper/benchmarks/runThermSniper.py  /root/ThermSniper/runThermSniper.
 
 # Let's Encrypt certificates aren't supported in Centos 6.x
 ARG WGET_OPTIONS=--no-check-certificate
+
+# Build HotSpot binary
+RUN cd /root/ThermSniper/external/HotSpot && \
+    make
 
 RUN cd /root/ThermSniper/external/snipersim && \
     mkdir -p pin_kit && \

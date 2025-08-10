@@ -1,3 +1,4 @@
+#TODO: in future: other scripts of ThermSniper (under scripts and external/sniper/scripts...) must be made compatible for docker environment as well...
 FROM snipersim/benchmarks:latest AS dockerhub
 
 # Install compatible Sniper version from GitHub

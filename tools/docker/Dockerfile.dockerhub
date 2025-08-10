@@ -91,8 +91,8 @@ ENV PATH /opt/rh/devtoolset-2/root/usr/bin/:$PATH
 # Enable gcc-7 as the default
 #ENV PATH /opt/rh/devtoolset-7/root/usr/bin/:$PATH
 # Download the Benchmarks
-RUN mkdir -p sniper
-COPY sniper sniper/
+#RUN mkdir -p sniper
+#COPY sniper sniper/
 RUN cd /home/user && git clone http://snipersim.org/git/benchmarks.git && cd benchmarks && git checkout -q 06d3a79ccc3deea71d382e6038ecbe3a39e54156 && make
 
 FROM centos:6 AS runner
